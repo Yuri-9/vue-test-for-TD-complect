@@ -1,0 +1,15 @@
+version: "3"
+services:
+  vue-vite:
+    image: vue-vite
+    container_name: vue-vite
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules/
+    ports:
+      - "3000:3000"
