@@ -1,8 +1,11 @@
 <template>
   <div class="wrapper">
-    <label :class="['label', inputValue ? 'visible' : '']">{{ label }}</label>
+    <label :class="['label', inputValue ? 'visible' : '']" :for="id">{{
+      label
+    }}</label>
     <input
       type="text"
+      :id="id"
       class="input"
       :value="inputValue"
       :placeholder="placeholder"
@@ -18,6 +21,7 @@ import { ref } from "vue";
 
 const props = defineProps({
   name: { type: String, required: true },
+  id: String,
   value: String,
   label: String,
   placeholder: String,
