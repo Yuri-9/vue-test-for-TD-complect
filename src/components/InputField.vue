@@ -75,7 +75,6 @@ const showPassword = () => {
 
   text-align: left;
   padding-top: 8px;
-  border: 1px solid red;
   position: relative;
   &.hasError {
     .label {
@@ -139,7 +138,6 @@ const showPassword = () => {
 .error-text {
   margin: 0 0 0 30px;
   padding-left: 20px;
-  padding-top: 4px;
   background: url(../assets/errorCircle.svg) left center / 16px no-repeat
     transparent;
   color: var(--Dark-Red);
