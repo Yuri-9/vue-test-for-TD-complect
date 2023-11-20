@@ -22,5 +22,8 @@ import Header from "../components/Header.vue";
   width: 100%;
   padding: 0 20px;
   background-color: var(--Mono-Light-blue);
+  @include tablet {
+    padding: 0;
+  }
 }
 </style>
