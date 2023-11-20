@@ -41,13 +41,14 @@
         @onChange="handleChange"
       />
     </fieldset>
-    <button type="submit">Зарегистрироваться</button>
+    <Button type="submit">Зарегистрироваться</Button>
   </form>
 </template>
 
 <script setup>
 import { reactive } from "vue";
 import InputField from "../../components/InputField.vue";
+import Button from "../../components/Button.vue";
 import useValidate from "../../hooks/useValidate";
 
 import { getValidationSchema } from "./validationSchema";
