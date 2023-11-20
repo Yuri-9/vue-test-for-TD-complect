@@ -1,8 +1,7 @@
 import { reactive, ref, toRefs } from "vue";
 import { validateField } from "../utils/validateField";
 
-export default function useValidate(validationSchema) {
-  const count = ref(0);
+export default function useValidate({ validationSchema, formData }) {
   const objectNames = Object.keys(validationSchema).reduce(
     (acc, item) => ({ ...acc, [item]: [] }),
     {}
@@ -10,9 +9,19 @@ export default function useValidate(validationSchema) {
 
   const errors = reactive(objectNames);
 
-  function onChange(name, value) {
-    errors[name] = validateField(name, value, validationSchema);
-  }
+  const onChange = ({ name, value }) => {
+    errors[name] = validateField({ name, value, validationSchema });
+  };
 
-  return { errors: toRefs(errors), count, onChange };
+  const validateFields = (fieldsNames) => {
+    fieldsNames.forEach((name) => {
+      errors[name] = validateField({
+        name,
+        value: formData[name],
+        validationSchema,
+      });
+    });
+  };
+
+  return { errors: toRefs(errors), onChange, validateFields };
 }
