@@ -1,4 +1,4 @@
-# Vue 3 + Vite + Docker
+# Vue 3 + Vite + Docker + SCSS
 
 ## to run app at local machine:
 

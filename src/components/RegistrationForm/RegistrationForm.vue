@@ -101,6 +101,14 @@ const { errors, onChange, validateFields } = useValidate({
   border: 1px solid var(--Gray-40);
   background: var(--White);
   box-shadow: 0px 0px 40px 0px rgba(141, 153, 174, 0.05);
+  @include tablet {
+    width: 100%;
+    height: 100%;
+    padding: 100px 10px;
+    border: none;
+    border-radius: 0;
+    border-top: 1px solid var(--Gray-40);
+  }
   .title {
     color: var(--Black-blue);
     margin: 0;

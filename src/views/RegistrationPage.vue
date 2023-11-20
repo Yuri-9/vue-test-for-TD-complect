@@ -30,6 +30,12 @@ const handleSubmitForm = ({ values }) => {
   justify-content: center;
   padding-top: 100px;
   gap: 250px;
+  @include tablet {
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+    height: 100%;
+  }
 }
 .content {
   display: flex;
@@ -39,6 +45,9 @@ const handleSubmitForm = ({ values }) => {
   flex: 1 1 100%;
   max-width: 550px;
   transform: translate(80px, 80px);
+  @include desktop {
+    display: none;
+  }
   &img {
     width: 100%;
   }
