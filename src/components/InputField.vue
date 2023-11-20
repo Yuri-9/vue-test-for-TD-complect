@@ -72,7 +72,7 @@ const showPassword = () => {
 <style scoped lang="scss">
 .wrapper {
   box-sizing: border-box;
-
+  flex-basis: 100%;
   text-align: left;
   padding-top: 8px;
   position: relative;
@@ -116,12 +116,12 @@ const showPassword = () => {
 
 .input {
   width: 100%;
-  line-height: 50px;
+  height: 50px;
   padding: 0 30px;
   font-size: 16px;
   background-color: var(--Light-Gray-40);
   border-radius: 8px;
-  border: 1px solid var(--Gray);
+  border: 1px solid var(--Gray-40);
   &.password {
     padding-right: 55px;
   }

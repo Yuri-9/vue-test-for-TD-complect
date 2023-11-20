@@ -17,12 +17,14 @@
 
   --White: #fff;
   --Gray: #8d99ae;
+  --Gray-40: #8d99ae66;
   --Light-Gray: #edf1f2;
   --Light-Gray-40: #f8fafb;
   --Dark-Red: #d90429;
   --Green: #31bf43;
 
   --Black-blue: #2b2d42;
+  --Mono-Light-blue: #f6f8fe;
 }
 
 * {
@@ -60,8 +62,19 @@ input {
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-family: "Roboto";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+h2 {
+  font-family: "Roboto";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 button {
@@ -88,10 +101,7 @@ button:focus-visible {
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
 }
 
 @media (prefers-color-scheme: light) {

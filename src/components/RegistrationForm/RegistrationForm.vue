@@ -84,27 +84,23 @@ const { errors, onChange, validateFields } = useValidate({
   padding: 100px 60px;
   width: 480px;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 40px;
   border-radius: 40px;
-  border: 1px solid var(--Gray);
+  border: 1px solid var(--Gray-40);
   background: var(--White);
   box-shadow: 0px 0px 40px 0px rgba(141, 153, 174, 0.05);
   .title {
-    color: var(--Black-blue, #2b2d42);
-    font-family: Inter;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    color: var(--Black-blue);
+    margin: 0;
   }
   .fieldset {
     display: flex;
     max-width: 480px;
+    width: 100%;
     padding: 0;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
     border: none;
   }
 }
