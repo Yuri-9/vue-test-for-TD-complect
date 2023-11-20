@@ -50,8 +50,11 @@ import { reactive } from "vue";
 import InputField from "../../components/InputField.vue";
 import Button from "../../components/Button.vue";
 import useValidate from "../../hooks/useValidate";
+import { checkHasErrors } from "../../utils/checkHasErrors";
 
 import { getValidationSchema } from "./validationSchema";
+
+const emits = defineEmits(["onSubmit"]);
 
 const initialValues = {
   login: "",
@@ -70,7 +73,14 @@ const handleChange = (name, value) => {
 };
 
 const submitForm = () => {
-  validateFields(Object.keys(initialValues));
+  const nameFields = Object.keys(initialValues);
+  validateFields(nameFields);
+
+  if (checkHasErrors(errors, nameFields)) {
+    console.log("there are errors");
+    return;
+  }
+  emits("onSubmit", { values });
 };
 
 const { errors, onChange, validateFields } = useValidate({
