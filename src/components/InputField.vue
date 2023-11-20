@@ -39,7 +39,7 @@ const inputValue = ref(props.value);
 function onChangeInput(e) {
   if (props.disabled) return;
   inputValue.value = e.target.value;
-  emits("onChange", e.target.value);
+  emits("onChange", props.name, e.target.value);
 }
 </script>
 

@@ -1,7 +1,3 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -12,7 +8,13 @@ import HelloWorld from "./components/HelloWorld.vue";
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <RegistrationForm />
 </template>
+
+<script setup>
+import HelloWorld from "./components/HelloWorld.vue";
+import RegistrationForm from "./components/RegistrationForm/RegistrationForm.vue";
+</script>
 
 <style scoped lang="scss">
 .logo {
