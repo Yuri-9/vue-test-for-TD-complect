@@ -1,3 +1,4 @@
+import { checkEmail } from "../../utils/checkEmail";
 import { checkManLength } from "../../utils/checkManLength";
 import { checkMinLength } from "../../utils/checkMinLength";
 import { checkRequired } from "../../utils/checkRequired";
@@ -10,5 +11,5 @@ export const validationSchema = {
     checkMinLength(MIN_LENGTH, value),
     checkManLength(MAN_LENGTH, value),
   ],
-  email: (value) => [checkRequired(value), checkMinLength(MIN_LENGTH, value)],
+  email: (value) => [checkRequired(value), checkEmail(value)],
 };

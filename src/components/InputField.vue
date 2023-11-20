@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div :class="['wrapper', hasError ? 'hasError' : '']">
     <label :class="['label', inputValue ? 'visible' : '']" :for="id">{{
       label
     }}</label>
@@ -12,12 +12,14 @@
       :disabled="disabled"
       @input="onChangeInput"
     />
-    <div class="error_text">{{ errorText }}</div>
+    <p class="error-text" v-if="hasError">
+      {{ filteredErrors.join(", ") }}
+    </p>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const props = defineProps({
   name: { type: String, required: true },
@@ -29,12 +31,21 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  error: Boolean,
+  errors: {
+    type: Object,
+    default: {},
+  },
   errorText: String,
 });
 const emits = defineEmits(["onChange"]);
 
 const inputValue = ref(props.value);
+
+const filteredErrors = computed(() =>
+  props.errors.value.filter((item) => !!item)
+);
+
+const hasError = computed(() => filteredErrors.value.length);
 
 function onChangeInput(e) {
   if (props.disabled) return;
@@ -46,11 +57,22 @@ function onChangeInput(e) {
 <style scoped lang="scss">
 .wrapper {
   box-sizing: border-box;
-  min-height: 50px;
+
   text-align: left;
   padding-top: 8px;
   border: 1px solid red;
   position: relative;
+  &.hasError {
+    .label {
+      color: var(--Dark-Red);
+    }
+    .input {
+      border-color: var(--Dark-Red);
+      &:focus {
+        outline: 1px solid var(--Dark-Red);
+      }
+    }
+  }
 }
 
 .label {
@@ -86,5 +108,14 @@ function onChangeInput(e) {
   background-color: var(--Light-Gray-40);
   border-radius: 8px;
   border: 1px solid var(--Gray);
+}
+
+.error-text {
+  margin: 0 0 0 30px;
+  padding-left: 20px;
+  padding-top: 4px;
+  background: url(../assets/errorCircle.svg) left center / 16px no-repeat
+    transparent;
+  color: var(--Dark-Red);
 }
 </style>

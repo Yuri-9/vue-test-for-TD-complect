@@ -1,5 +1,4 @@
 <template>
-  <div>errors {{ errors }}</div>
   <form class="form">
     <InputField
       id="login"
@@ -7,6 +6,7 @@
       label="Логин"
       placeholder="Логин"
       :value="''"
+      :errors="errors.login"
       @onChange="onChange"
     />
     <InputField
@@ -15,6 +15,7 @@
       label="Email"
       placeholder="Email"
       :value="''"
+      :errors="errors.email"
       @onChange="onChange"
     />
   </form>
