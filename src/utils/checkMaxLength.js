@@ -1,4 +1,4 @@
-export const checkManLength = (maxLength, value, message) => {
+export const checkMaxLength = (maxLength, value, message) => {
   if (String(value).length > maxLength) {
     return message || `Max length: ${maxLength}`;
   }

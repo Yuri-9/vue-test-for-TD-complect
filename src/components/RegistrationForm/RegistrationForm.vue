@@ -18,6 +18,16 @@
       :errors="errors.email"
       @onChange="onChange"
     />
+    <InputField
+      id="password"
+      name="password"
+      type="password"
+      label="Password"
+      placeholder="Password"
+      :value="''"
+      :errors="errors.password"
+      @onChange="onChange"
+    />
   </form>
 </template>
 

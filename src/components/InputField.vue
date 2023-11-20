@@ -4,14 +4,22 @@
       label
     }}</label>
     <input
-      type="text"
+      :type="inputType"
       :id="id"
-      class="input"
+      :class="['input', props.type === 'password' ? 'password' : '']"
       :value="inputValue"
       :placeholder="placeholder"
       :disabled="disabled"
       @input="onChangeInput"
     />
+    <button
+      v-if="props.type === 'password'"
+      type="button"
+      class="button-show-password"
+      @click="showPassword"
+    >
+      <RegEye :slash="isPasswordType" />
+    </button>
     <p class="error-text" v-if="hasError">
       {{ filteredErrors.join(", ") }}
     </p>
@@ -20,11 +28,13 @@
 
 <script setup>
 import { computed, ref } from "vue";
+import RegEye from "./RegEyeSvg.vue";
 
 const props = defineProps({
   name: { type: String, required: true },
   id: String,
   value: String,
+  type: { type: String, default: "test" },
   label: String,
   placeholder: String,
   disabled: {
@@ -40,18 +50,23 @@ const props = defineProps({
 const emits = defineEmits(["onChange"]);
 
 const inputValue = ref(props.value);
+const inputType = ref(props.type);
 
 const filteredErrors = computed(() =>
   props.errors.value.filter((item) => !!item)
 );
-
 const hasError = computed(() => filteredErrors.value.length);
+const isPasswordType = computed(() => inputType.value === "password");
 
-function onChangeInput(e) {
+const onChangeInput = (e) => {
   if (props.disabled) return;
   inputValue.value = e.target.value;
   emits("onChange", props.name, e.target.value);
-}
+};
+
+const showPassword = () => {
+  inputType.value = inputType.value === "password" ? "text" : "password";
+};
 </script>
 
 <style scoped lang="scss">
@@ -108,6 +123,17 @@ function onChangeInput(e) {
   background-color: var(--Light-Gray-40);
   border-radius: 8px;
   border: 1px solid var(--Gray);
+  &.password {
+    padding-right: 55px;
+  }
+}
+
+.button-show-password {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  padding: 0;
+  height: 20px;
 }
 
 .error-text {
